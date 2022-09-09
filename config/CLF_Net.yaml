@@ -1,0 +1,36 @@
+PROJECT:
+  name: 'CLF_Net_Image_Fusion'
+  save_path: './work_dirs/'
+
+TRAIN_DATASET:
+  root_dir: './datasets/cropped_img/'
+  sensors: [ 'Vis', 'Inf' ]
+  channels: 1
+
+TRAIN:
+  batch_size: 4
+  gpu_id: 0
+  max_epoch: 20
+  val_interval: 1
+  debug_interval: 100
+  resume: None
+
+TEST_DATASET:
+  root_dir: './datasets/test_img/'
+  sensors: [ 'Vis', 'Inf' ]
+  channels: 1
+
+
+
+TEST:
+  batch_size: 1
+  weight_path: './work_dirs/CLF_Net/CLF_Net.pth'
+  save_path: './results'
+
+MODEL:
+  model_name: 'CLF_Net'
+  input_channels: 1
+  out_channels: 16
+  input_sensors: [ 'Vis', 'Inf' ]
+  coder_layers: 4
+  decoder_layers: 4
